@@ -25,9 +25,9 @@ class CoinListViewModel @Inject constructor(
     private fun getCoins() {
         cryptoUseCases.getCoins().onEach {result ->
             when(result) {
-                is Resources.Error -> _uiState.update { it.copy(errorMessage = result.message ?: "An unexpected error occur") }
+                is Resources.Error -> _uiState.update { it.copy(errorMessage = result.message ?: "An unexpected error occur", isLoading = false) }
                 is Resources.Loading -> _uiState.update { it.copy(isLoading = true) }
-                is Resources.Success -> _uiState.update { it.copy(coins = result.data ?: emptyList()) }
+                is Resources.Success -> _uiState.update { it.copy(coins = result.data ?: emptyList(), isLoading = false) }
             }
         }.launchIn(viewModelScope)
     }

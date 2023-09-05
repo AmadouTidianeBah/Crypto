@@ -1,4 +1,4 @@
-package com.atb.cryptocurrency
+package com.atb.cryptocurrency.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

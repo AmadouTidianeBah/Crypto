@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,29 +23,21 @@ import com.atb.cryptocurrency.presentation.ui.theme.CryptoCurrencyTheme
 @Composable
 fun CoinDetailTeamSection(
     modifier: Modifier = Modifier,
-    teams: List<Team>
+    member: Team
 ) {
-    LazyColumn(
-        modifier =  modifier
+    Row(
+        modifier = modifier
+            .fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        items(items = teams, key = {it.id}) { member ->
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(text = member.name, fontSize = 20.sp)
+        Text(text = member.name, fontSize = 20.sp)
 
-                Text(
-                    text = member.position,
-                    color = Color.Cyan,
-                    fontStyle = FontStyle.Italic
-                )
-            }
-            Divider()
-        }
+        Text(
+            text = member.position,
+            color = MaterialTheme.colorScheme.primary,
+            fontStyle = FontStyle.Italic
+        )
     }
 }
 
